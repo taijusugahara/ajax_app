@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     # .create = .new + .save
-    binding.pry
+    
     post = Post.create(content: params[:content])
     render json:{ post: post }
     # @post = Post.new(content: params[:content])
