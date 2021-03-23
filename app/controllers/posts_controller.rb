@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index # indexアクションを定義した
-    @posts = Post.all
+    @posts = Post.order(id: "DESC")
   end
 
   def new
@@ -9,7 +9,9 @@ class PostsController < ApplicationController
 
   def create
     # .create = .new + .save
-    Post.create(content: params[:content])
+    
+    post = Post.create(content: params[:content])
+    render json:{ post: post }
     # @post = Post.new(content: params[:content])
     # @post.save
   end
